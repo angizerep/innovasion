@@ -1,0 +1,25 @@
+<template>
+  <div class="slds-p-around_medium">
+    <h1 class="slds-text-heading_medium">Estado de Integraciones</h1>
+
+    <!-- KPIs -->
+    <c-integration-kpi-cards kpis={kpis}></c-integration-kpi-cards>
+
+    <!-- Filtros -->
+    <div class="slds-grid slds-gutters slds-m-vertical_small">
+      <div class="slds-col slds-size_1-of-3">
+        <lightning-input type="text" label="Proveedor" value={filterProvider} onchange={onProviderChange}></lightning-input>
+      </div>
+      <div class="slds-col slds-size_1-of-3">
+        <lightning-combobox label="Severidad" value={filterSeverity} options={severityOptions} onchange={onSeverityChange}></lightning-combobox>
+      </div>
+      <div class="slds-col slds-size_1-of-3">
+        <lightning-combobox label="Estado" value={filterStatus} options={statusOptions} onchange={onStatusChange}></lightning-combobox>
+      </div>
+    </div>
+
+    <!-- Tabla de endpoints -->
+    <lightning-datatable key-field="endpointId" data={rows} columns={columns} onrowaction={handleRowAction} hide-checkbox-column>
+    </lightning-datatable>
+  </div>
+</template>

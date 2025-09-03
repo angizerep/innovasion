@@ -1,0 +1,48 @@
+<template>
+  <div class="slds-p-around_medium">
+    <lightning-card title="Detalle de Endpoint">
+      <div class="slds-m-bottom_small">
+        <lightning-input type="text" label="Endpoint Id / Nombre" value={endpointId} onchange={onEndpointChange}></lightning-input>
+        <lightning-button class="slds-m-top_small" variant="brand" label="Buscar" onclick={loadAlerts}></lightning-button>
+      </div>
+
+      <template if:true={alerts}>
+        <lightning-datatable key-field="id" data={alerts} columns={columns} onrowaction={handleRowAction} hide-checkbox-column>
+        </lightning-datatable>
+      </template>
+      <template if:false={alerts}>
+        <p class="slds-p-around_small">No hay alertas para mostrar.</p>
+      </template>
+    </lightning-card>
+
+    <!-- Modal de Alerta -->
+    <template if:true={showModal}>
+      <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open">
+        <div class="slds-modal__container">
+          <header class="slds-modal__header">
+            <h2 class="slds-text-heading_medium">Alerta: {selectedAlert.name}</h2>
+          </header>
+          <div class="slds-modal__content slds-p-around_medium">
+            <p><strong>Proveedor:</strong> {selectedAlert.provider}</p>
+            <p><strong>Endpoint:</strong> {selectedAlert.endpoint}</p>
+            <p><strong>Severidad:</strong> {selectedAlert.severity}</p>
+            <p><strong>Regla:</strong> {selectedAlert.rule}</p>
+            <p><strong>p95 (10m):</strong> {selectedAlert.p95_10m}</p>
+            <p><strong>Mediana (60m):</strong> {selectedAlert.median_60m}</p>
+            <p><strong>MAD (60m):</strong> {selectedAlert.mad_60m}</p>
+            <p><strong>Fallos (≈3m):</strong> {selectedAlert.failures_3m}</p>
+            <template if:true={selectedAlert.caseNumber}>
+              <p><strong>Case:</strong> {selectedAlert.caseNumber}</p>
+            </template>
+          </div>
+          <footer class="slds-modal__footer">
+            <lightning-button label="Cerrar" onclick={closeModal}></lightning-button>
+            <lightning-button variant="neutral" class="slds-m-left_small" label="Acknowledge" onclick={ack}></lightning-button>
+            <lightning-button variant="brand" class="slds-m-left_small" label="Crear Case" onclick={createCase}></lightning-button>
+          </footer>
+        </div>
+      </section>
+      <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+  </div>
+</template>

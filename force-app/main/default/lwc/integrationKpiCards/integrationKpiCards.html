@@ -1,0 +1,40 @@
+<template>
+  <div class="slds-grid slds-gutters slds-m-vertical_small">
+    <div class="slds-col">
+      <article class="slds-card">
+        <div class="slds-card__header slds-p-around_small"><h2 class="slds-text-title_caps">MTTD (min)</h2></div>
+        <div class="slds-card__body slds-p-around_medium"><span class="kpi">{kpis.mttdMinutes}</span></div>
+      </article>
+    </div>
+    <div class="slds-col">
+      <article class="slds-card">
+        <div class="slds-card__header slds-p-around_small"><h2 class="slds-text-title_caps">MTTR (min)</h2></div>
+        <div class="slds-card__body slds-p-around_medium"><span class="kpi">{kpis.mttrMinutes}</span></div>
+      </article>
+    </div>
+    <div class="slds-col">
+      <article class="slds-card">
+        <div class="slds-card__header slds-p-around_small"><h2 class="slds-text-title_caps">Precisión (%)</h2></div>
+        <div class="slds-card__body slds-p-around_medium"><span class="kpi">{kpis.alertPrecisionPct}</span></div>
+      </article>
+    </div>
+    <div class="slds-col">
+      <article class="slds-card">
+        <div class="slds-card__header slds-p-around_small"><h2 class="slds-text-title_caps">Time-to-Ack (min)</h2></div>
+        <div class="slds-card__body slds-p-around_medium"><span class="kpi">{kpis.timeToAckMinutes}</span></div>
+      </article>
+    </div>
+    <div class="slds-col">
+      <article class="slds-card">
+        <div class="slds-card__header slds-p-around_small"><h2 class="slds-text-title_caps">Abiertas</h2></div>
+        <div class="slds-card__body slds-p-around_medium"><span class="kpi">{kpis.openAlerts}</span></div>
+      </article>
+    </div>
+    <div class="slds-col">
+      <article class="slds-card">
+        <div class="slds-card__header slds-p-around_small"><h2 class="slds-text-title_caps">Críticas</h2></div>
+        <div class="slds-card__body slds-p-around_medium"><span class="kpi">{kpis.criticalAlerts}</span></div>
+      </article>
+    </div>
+  </div>
+</template>
